@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-SRCS = ft_isalpha.c \
+LIBFT_SRCS = ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \
 ft_isascii.c \
@@ -46,7 +46,10 @@ ft_lstadd_back.c \
 ft_lstdelone.c \
 ft_lstclear.c \
 ft_lstiter.c \
-ft_lstmap.c
+ft_lstmap.c 
+
+GNL_SRCS = get_next_line.c get_next_line_utils.c
+SRCS = $(LIBFT_SRCS) $(GNL_SRCS)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -56,7 +59,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I. -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
